@@ -1,9 +1,9 @@
 // list of New Zealand Mushrooms //
-let mushroomList = {
-    phlegmacium : {taxonName : "Phlegmacium" , collectionYear : 1968 , types : ['Soil' , 'Otago Lakes' , 'Forest']} ,
-    agaricalesClem : {taxonName : "Agaricales Clem" , collectionYear : 1983 , types : ['Litter' , 'Auckland' , 'Forest']} ,
-    boletaceae : {taxonName : "Boletaceae" , collectionYear : 1970 , types : ['soil' , 'Nelson' , 'Forest']} ,
-}
+let mushroomList = [
+    { taxonName: "Phlegmacium", collectionYear: 1968, types: ['Soil', 'Otago Lakes', 'Forest'] },
+    { taxonName: "Agaricales Clem", collectionYear: 1983, types: ['Litter', 'Auckland', 'Forest'] },
+    { taxonName: "Boletaceae", collectionYear: 1970, types: ['soil', 'Nelson', 'Forest'] }
+];
 
 
 
