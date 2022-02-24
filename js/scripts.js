@@ -1,40 +1,39 @@
-// list of New Zealand Mushrooms //
-let mushroomList = [
-    { taxonName: "Phlegmacium", collectionYear: 1968, habitat: ['Soil', 'Otago Lakes', 'Forest'] },
-    { taxonName: "Agaricales Clem", collectionYear: 1983, habitat: ['Litter', 'Auckland', 'Forest'] },
-    { taxonName: "Boletaceae", collectionYear: 1970, habitat: ['soil', 'Nelson', 'Forest'] }
-];
+// list of New Zealand Mushrooms contained in IIFE //
+//  mushroomName : {taxonName : "mushroom name" , collectionYear : 0000 , habitat : ['substrate' , 'location' , 'ecosystem']} ,
 
-// iterates through mushroomList //
+let mushroomRepository = (function () {
+    let mushroomList = [
+        { taxonName: "Phlegmacium", collectionYear: 1968, habitat: ['Soil', ' Otago Lakes', ' Forest'] },
+        { taxonName: "Agaricales Clem", collectionYear: 1983, habitat: ['Litter', ' Auckland ', ' Forest '] },
+        { taxonName: "Boletaceae", collectionYear: 1970, habitat: ['soil', ' Nelson', ' Forest'] }
+    ];
+  
+    return {
+      add: function(mushroom) {
+        mushroomList.push(mushroom);
+      },
+      getAll: function() {
+        return mushroomList;
+      }
+    }
+  })();
+  
+// below SHOULD get data from mushroom Repository and then iterate through mushroomList using the forEach function //
+
+console.log(mushroomRepository.getAll(mushroom) {
+    document.write(mushroom.taxonName + ' was found in ' + mushroom.collectionYear + ' in the following soil, location, & habitat: ' + mushroom.habitat + '</p>');
+  });
+
+
+
+
+
+
+
+/*
+
 mushroomList.forEach(function(mushroom) {
     document.write(mushroom.taxonName + ' was found in ' + mushroom.collectionYear + ' in the following soil, location, & habitat: ' + mushroom.habitat + '</p>');
   });
-  
 
-
-
-//  mushroomName : {taxonName : "mushroom name" , collectionYear : 0000 , habitat : ['substrate' , 'location' , 'ecosystem']} ,
-
-/* functions to solve multiple lists problem.
-
-let pokemonList = [
-  // Pokémon objects
-];
-
-let pokemonList2 = [
-  // different set of Pokémon objects
-];
-
-function printArrayDetails(list){
-  for (let i = 0; i < list.length; i++){
-    // document.write("<p>" + list[i].name + "</p>");
-    // printing list[i]’s other details
-    // ...
-  }
-}
-
-printArrayDetails(pokemonList); // executes the function using ‘pokemonList‘ as its input
-
-printArrayDetails(pokemonList2); // executes the function using ‘pokemonList2‘ as its input
-
-*/
+  */
