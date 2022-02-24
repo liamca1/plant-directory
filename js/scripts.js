@@ -6,13 +6,10 @@ let mushroomList = [
 ];
 
 // iterates through mushroomList //
-for (let i=0; i < mushroomList.length; i++) {
-    if(mushroomList[i].collectionYear > 1980){
-        document.write(mushroomList[i].taxonName + "( year identified : " + mushroomList[i].collectionYear + " )" + "This mushroom was only identified recently! <br>")
-    }else {
-    document.write(mushroomList[i].taxonName + " (year identified : " + mushroomList[i].collectionYear + ") " + " (habitat : " + mushroomList[i].habitat + ")<br>")  
-    }
-}
+mushroomList.forEach(function(mushroom) {
+    document.write(mushroom.taxonName + ' was found in ' + mushroom.collectionYear + ' in the following soil, location, & habitat: ' + mushroom.habitat + '</p>');
+  });
+  
 
 
 
