@@ -8,6 +8,16 @@ let mushroomRepository = (function () {
         { taxonName: "Boletaceae", collectionYear: 1970, habitat: ['soil', ' Nelson', ' Forest'] }
     ];
   
+    function addListItem (mushroom) {
+      let mushroomList = document.querySelector(".mushroom-list");
+      let listMushroom = document.createElement("li");
+      let button = document.createElement("button");
+      button.innerText = mushroom.taxonName;
+      button.classList.add("button-class")
+      listMushroom.appendChild(button);
+      mushroomList.apphendChild(listMushroom);
+    }
+
     return {
       add: function(mushroom) {
         mushroomList.push(mushroom);
@@ -15,11 +25,12 @@ let mushroomRepository = (function () {
       getAll: function() {
         return mushroomList;
       }
+      addListItem: addListItem
     }
   })();
   
-// below SHOULD get data from mushroom Repository and then iterate through mushroomList using the forEach function //
+// forEach Loop Function: below SHOULD get data from mushroom Repository and then iterate through mushroomList using the forEach function //
 
 mushroomRepository.getAll().forEach(function(mushroom) {
-  document.write(mushroom.taxonName + ' was found in ' + mushroom.collectionYear + ' in the following soil, location, & habitat: ' + mushroom.habitat + '</p>');
+  mushroomRepository.addListItem(mushroom);
 });
