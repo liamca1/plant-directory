@@ -20,20 +20,6 @@ let mushroomRepository = (function () {
   
 // below SHOULD get data from mushroom Repository and then iterate through mushroomList using the forEach function //
 
-console.log(mushroomRepository.getAll(mushroom) {
-    document.write(mushroom.taxonName + ' was found in ' + mushroom.collectionYear + ' in the following soil, location, & habitat: ' + mushroom.habitat + '</p>');
-  });
-
-
-
-
-
-
-
-/*
-
-mushroomList.forEach(function(mushroom) {
-    document.write(mushroom.taxonName + ' was found in ' + mushroom.collectionYear + ' in the following soil, location, & habitat: ' + mushroom.habitat + '</p>');
-  });
-
-  */
+mushroomRepository.getAll().forEach(function(mushroom) {
+  document.write(mushroom.taxonName + ' was found in ' + mushroom.collectionYear + ' in the following soil, location, & habitat: ' + mushroom.habitat + '</p>');
+});
