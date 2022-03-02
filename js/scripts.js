@@ -2,35 +2,64 @@
 //  mushroomName : {taxonName : "mushroom name" , collectionYear : 0000 , habitat : ['substrate' , 'location' , 'ecosystem']} ,
 
 let mushroomRepository = (function () {
-    let mushroomList = [
-        { taxonName: "Phlegmacium", collectionYear: 1968, habitat: ['Soil', ' Otago Lakes', ' Forest'] },
-        { taxonName: "Agaricales Clem", collectionYear: 1983, habitat: ['Litter', ' Auckland ', ' Forest '] },
-        { taxonName: "Boletaceae", collectionYear: 1970, habitat: ['soil', ' Nelson', ' Forest'] }
-    ];
-  
-    function addListItem (mushroom) {
-      let mushroomList = document.querySelector(".mushroom-list");
-      let listMushroom = document.createElement("li");
-      let button = document.createElement("button");
-      button.innerText = mushroom.taxonName;
-      button.classList.add("button-class")
-      listMushroom.appendChild(button);
-      mushroomList.apphendChild(listMushroom);
-    }
+  let repository = [
+    {
+      taxonName: "Phlegmacium",
+      collectionYear: 1968,
+      habitat: ["Soil", "Otago Lakes", "Forest"],
+    },
+    {
+      taxonName: "Agaricales Clem",
+      collectionYear: 1983,
+      habitat: ["Litter", "Auckland", "Forest"],
+    },
+    {
+      taxonName: "Boletaceae",
+      collectionYear: 1970,
+      habitat: ["Soil", "Nelson", "Forest"],
+    },
+  ];
 
-    return {
-      add: function(mushroom) {
-        mushroomList.push(mushroom);
-      },
-      getAll: function() {
-        return mushroomList;
-      }
-      addListItem: addListItem
-    }
-  })();
+  // function for adding mushrooms
   
-// forEach Loop Function: below SHOULD get data from mushroom Repository and then iterate through mushroomList using the forEach function //
+  function add(mushroom) {
+    if (
+      typeof mushroom === "object" &&
+      "taxonName" in mushroom &&
+      "collectionYear" in mushroom &&
+      "habitat" in mushroom
+    ) {
+      repository.push(mushroom);
+    } else {
+      console.log("mushroom is not correct");
+    }
+  }
+  function getAll() {
+    return repository;
+  }
 
-mushroomRepository.getAll().forEach(function(mushroom) {
+  function addListItem(mushroom){
+    let mushroomList = document.querySelector(".mushroom-list");
+    let listmushroom = document.createElement("li");
+    let button = document.createElement("button");
+    button.innerText = mushroom.taxonName;
+    button.classList.add("button-class");
+    listmushroom.appendChild(button);
+    mushroomList.appendChild(listmushroom);
+  }
+  return {
+    add: add,
+    getAll: getAll,
+    addListItem: addListItem
+  };
+})();
+
+mushroomRepository.add({ taxonName: "Agaricus subperonatus", collectionYear: 1968, habitat: ["soil", "Dunedin"] });
+
+console.log(mushroomRepository.getAll());
+
+// forEach Loop Function:
+
+mushroomRepository.getAll().forEach(function (mushroom) {
   mushroomRepository.addListItem(mushroom);
 });
