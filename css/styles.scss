@@ -7,8 +7,13 @@
     color: #ccc;
     cursor: pointer;
     font-weight: 700 !important;
+    margin: 4px 2px;
+  
     text-transform: uppercase;
     list-style-type: none;
     font-family: Univers-Condensed,Arial,sans-serif;
     font-style: normal;
-}
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }

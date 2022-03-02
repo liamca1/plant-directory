@@ -37,7 +37,9 @@ let mushroomRepository = (function () {
   function getAll() {
     return repository;
   }
-
+  
+// button
+  
   function addListItem(mushroom){
     let mushroomList = document.querySelector(".mushroom-list");
     let listmushroom = document.createElement("li");
@@ -46,6 +48,9 @@ let mushroomRepository = (function () {
     button.classList.add("button-class");
     listmushroom.appendChild(button);
     mushroomList.appendChild(listmushroom);
+    button.addEventListener("click", function (event) {
+      console.log(event)
+    });
   }
   return {
     add: add,
@@ -63,3 +68,7 @@ console.log(mushroomRepository.getAll());
 mushroomRepository.getAll().forEach(function (mushroom) {
   mushroomRepository.addListItem(mushroom);
 });
+
+function showDetails(mushroom) {
+  console.log(mushroom)
+};
