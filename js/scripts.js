@@ -57,6 +57,11 @@ let mushroomRepository = (function () {
     getAll: getAll,
     addListItem: addListItem
   };
+
+  function showDetails(mushroom) {
+    console.log(mushroom)
+  };
+
 })();
 
 mushroomRepository.add({ taxonName: "Agaricus subperonatus", collectionYear: 1968, habitat: ["soil", "Dunedin"] });
@@ -69,6 +74,3 @@ mushroomRepository.getAll().forEach(function (mushroom) {
   mushroomRepository.addListItem(mushroom);
 });
 
-function showDetails(mushroom) {
-  console.log(mushroom)
-};
