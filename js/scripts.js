@@ -21,7 +21,7 @@ let mushroomRepository = (function () {
   ];
 
   // function for adding mushrooms
-  
+
   function add(mushroom) {
     if (
       typeof mushroom === "object" &&
@@ -37,9 +37,9 @@ let mushroomRepository = (function () {
   function getAll() {
     return repository;
   }
-  
+
 // button
-  
+
   function addListItem(mushroom){
     let mushroomList = document.querySelector(".mushroom-list");
     let listmushroom = document.createElement("li");
@@ -49,17 +49,18 @@ let mushroomRepository = (function () {
     listmushroom.appendChild(button);
     mushroomList.appendChild(listmushroom);
     button.addEventListener("click", function (event) {
-      console.log(event)
+      showDetails(mushroom);
     });
   }
+
+  function showDetails(mushroom) {
+    console.log(mushroom)
+  };
+
   return {
     add: add,
     getAll: getAll,
     addListItem: addListItem
-  };
-
-  function showDetails(mushroom) {
-    console.log(mushroom)
   };
 
 })();
