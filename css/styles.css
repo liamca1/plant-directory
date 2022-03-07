@@ -1,5 +1,5 @@
 .button-class {
-  font-size: 14px;
+  font-size: 20px;
   line-height: 16px;
   display: inline-block;
   padding: 9px 12px 8px;
@@ -10,7 +10,7 @@
   margin: 4px 2px;
   text-transform: uppercase;
   list-style-type: none;
-  font-family: Univers-Condensed,Arial,sans-serif;
+  font-family: Arial,sans-serif;
   font-style: normal;
   -webkit-transition-duration: 0.4s;
   /* Safari */
