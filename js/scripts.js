@@ -1,37 +1,23 @@
 // list of New Zealand Mushrooms contained in IIFE //
 //  mushroomName : {taxonName : "mushroom name" , collectionYear : 0000 , habitat : ['substrate' , 'location' , 'ecosystem']} ,
 
-let mushroomRepository = (function () {
-  let repository = [
-    {
-      taxonName: "Phlegmacium",
-      collectionYear: 1968,
-      habitat: ["Soil", "Otago Lakes", "Forest"],
-    },
-    {
-      taxonName: "Agaricales Clem",
-      collectionYear: 1983,
-      habitat: ["Litter", "Auckland", "Forest"],
-    },
-    {
-      taxonName: "Boletaceae",
-      collectionYear: 1970,
-      habitat: ["Soil", "Nelson", "Forest"],
-    },
-  ];
+let observationRepository = (function () {
+  let observationList = [];
+  let apiUrl = '';
+}
 
   // function for adding mushrooms
 
-  function add(mushroom) {
+  function add(observation) {
     if (
-      typeof mushroom === "object" &&
-      "taxonName" in mushroom &&
-      "collectionYear" in mushroom &&
-      "habitat" in mushroom
+      typeof observation === "object" &&
+      "taxonName" in observation &&
+      "collectionYear" in observation &&
+      "habitat" in observation
     ) {
-      repository.push(mushroom);
+      repository.push(observation);
     } else {
-      console.log("mushroom is not correct");
+      console.log("observation is not correct");
     }
   }
   function getAll() {
@@ -40,21 +26,37 @@ let mushroomRepository = (function () {
 
 // button
 
-  function addListItem(mushroom){
-    let mushroomList = document.querySelector(".mushroom-list");
-    let listmushroom = document.createElement("li");
+  function addListItem(observation){
+    let observationList = document.querySelector(".observation-list");
+    let listobservation = document.createElement("li");
     let button = document.createElement("button");
-    button.innerText = mushroom.taxonName;
+    button.innerText = observation.taxonName;
     button.classList.add("button-class");
-    listmushroom.appendChild(button);
-    mushroomList.appendChild(listmushroom);
+    listobservation.appendChild(button);
+    observationList.appendChild(listobservation);
     button.addEventListener("click", function (event) {
-      showDetails(mushroom);
+      showDetails(observation);
     });
   }
 
-  function showDetails(mushroom) {
-    console.log(mushroom)
+function loadList() {
+  return fetch(apiUrl).then(function (response) {
+    return response.json();
+  });.then(function (json) {
+    json.results.forEach(function (item) {
+      let observation = {
+        name: item.name,
+        detailsUrl: item.url
+      };
+      add(observation);
+    });
+    }).catch(function (e) {
+      console.error(e);
+    })
+  }
+
+  function showDetails(observation) {
+    console.log(observation)
   };
 
   return {
@@ -65,12 +67,12 @@ let mushroomRepository = (function () {
 
 })();
 
-mushroomRepository.add({ taxonName: "Agaricus subperonatus", collectionYear: 1968, habitat: ["soil", "Dunedin"] });
+observationRepository.add({ taxonName: "Agaricus subperonatus", collectionYear: 1968, habitat: ["soil", "Dunedin"] });
 
-console.log(mushroomRepository.getAll());
+console.log(observationRepository.getAll());
 
 // forEach Loop Function:
 
-mushroomRepository.getAll().forEach(function (mushroom) {
-  mushroomRepository.addListItem(mushroom);
+observationRepository.getAll().forEach(function (observation) {
+  observationRepository.addListItem(observation);
 });
