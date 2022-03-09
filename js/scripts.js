@@ -1,78 +1,83 @@
-// list of New Zealand Mushrooms contained in IIFE //
-//  mushroomName : {taxonName : "mushroom name" , collectionYear : 0000 , habitat : ['substrate' , 'location' , 'ecosystem']} ,
+let pokemonRepository = (function () {
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
-let observationRepository = (function () {
-  let observationList = [];
-  let apiUrl = '';
-}
-
-  // function for adding mushrooms
-
-  function add(observation) {
+  function add(pokemon) {
     if (
-      typeof observation === "object" &&
-      "taxonName" in observation &&
-      "collectionYear" in observation &&
-      "habitat" in observation
+      typeof pokemon === "object" &&
+      "name" in pokemon
     ) {
-      repository.push(observation);
+      pokemonList.push(pokemon);
     } else {
-      console.log("observation is not correct");
+      console.log("pokemon is not correct");
     }
   }
   function getAll() {
-    return repository;
+    return pokemonList;
   }
-
-// button
-
-  function addListItem(observation){
-    let observationList = document.querySelector(".observation-list");
-    let listobservation = document.createElement("li");
+  function addListItem(pokemon) {
+    let pokemonList = document.querySelector(".pokemon-list");
+    let listpokemon = document.createElement("li");
     let button = document.createElement("button");
-    button.innerText = observation.taxonName;
+    button.innerText = pokemon.name;
     button.classList.add("button-class");
-    listobservation.appendChild(button);
-    observationList.appendChild(listobservation);
-    button.addEventListener("click", function (event) {
-      showDetails(observation);
+    listpokemon.appendChild(button);
+    pokemonList.appendChild(listpokemon);
+    button.addEventListener("click", function(event) {
+      showDetails(pokemon);
     });
   }
 
-function loadList() {
-  return fetch(apiUrl).then(function (response) {
-    return response.json();
-  });.then(function (json) {
-    json.results.forEach(function (item) {
-      let observation = {
-        name: item.name,
-        detailsUrl: item.url
-      };
-      add(observation);
-    });
+  function loadList() {
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+        console.log(pokemon);
+      });
     }).catch(function (e) {
       console.error(e);
     })
   }
 
-  function showDetails(observation) {
-    console.log(observation)
-  };
+  function loadDetails(item) {
+    let url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+      return response.json();
+    }).then(function (details) {
+      // Now we add the details to the item
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+    }).catch(function (e) {
+      console.error(e);
+    });
+  }
+
+  function showDetails(item) {
+    pokemonRepository.loadDetails(item).then(function () {
+      console.log(item);
+    });
+  }
 
   return {
     add: add,
     getAll: getAll,
-    addListItem: addListItem
+    addListItem: addListItem,
+    loadList: loadList,
+    loadDetails: loadDetails,
+    showDetails: showDetails
   };
-
 })();
 
-observationRepository.add({ taxonName: "Agaricus subperonatus", collectionYear: 1968, habitat: ["soil", "Dunedin"] });
 
-console.log(observationRepository.getAll());
-
-// forEach Loop Function:
-
-observationRepository.getAll().forEach(function (observation) {
-  observationRepository.addListItem(observation);
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
 });
