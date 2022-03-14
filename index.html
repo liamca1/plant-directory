@@ -6,12 +6,64 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
     <title>Simple JS App</title>
   </head>
-  <body>
+
+  <body class="main">
     <h1>Fungi</h1>
     <p>list of Fungi properties</p>
-    <ul class='pokemon-list'></ul>
-      
-    </div>
+<!-- 
+    <div>
+      <ul class='list-group'>
+        <li class='list-group-item'></li>
+      </ul>
+    </div> -->
+
+<!-- modal -->
+
+
+<!-- Button trigger modal -->
+
+<button type="button" class="btn-primary" data-toggle="modal" data-target="#pokemonModal">
+</button>
+
+<!-- Modal start -->
+<!-- Pokemon List -->
+<div class="list-group">
+  <ul class="list-group">
+   <li class='list-group-item'></li>
+  </ul>
+      <div class="modal-fade" id="pokemonModal" tabindex="-1" role="dialog" aria-labelledby="pokemonModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="pokemonModalLabel"></h5>
+          <button type="button" class="close"></button>
+      </div>
+
+      <div class="modal-body">
+        ...
+      </div>
+    
+      </div>
+      </div>
+      </div>
+</div>
+
+<!-- 
+    <div class="modal-bg">
+      <div class="button-class">
+        <h2>Fungi</h2>
+        <lable for="name">Name: </lable>
+        <input for="name"></input>
+        <label for="email">Email: </label>
+        <input for="email"></input>
+        <button id="subscribe-button">Subscribe</button>
+        <button class='modal-close'>Close</button>
+      </div>
+    </div> -->
+
+<!-- modal end -->
+
     <strong>
       <script src="js/promise-polyfill.js"></script>
       <script src="js/fetch-polyfill.js"></script>
