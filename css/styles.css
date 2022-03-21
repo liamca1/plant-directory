@@ -4,20 +4,25 @@
 
 .list-group{
   font-family: 'PT Sans', sans-serif;
-  display: flex;
+  /* display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
+}
+
+h2 {
+  font-family: 'PT Sans', sans-serif;
+  color: white;
 }
 
 .list-group-items{
-  justify-content: space-sround;
+  /* justify-content: space-sround; */
 }
 
 
 #modal-container {
-  position: fixed;
-  padding:  none /* 20px */;
+  /* position: fixed;
+  padding:  none;
   box-sizing: border-box;
   top: 0;
   left: 0;
@@ -30,14 +35,15 @@
   overflow: auto; 
   
   display: grid;
-  text-align: center;
+  text-align: center; */
 }
 
 .modal {
   margin: auto;
   display: inline-block;
   box-sizing: border-box;
-  background: #fff;
+  background: #436937;
+  text: h2;
   padding:15px;
   width: 100%;
   max-width: 700px;
