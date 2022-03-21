@@ -26,9 +26,7 @@ let pokemonRepository = (function(){
   }
 
   function loadList(){
-    showLoadingSpinner();
     return fetch(apiUrl).then(function(response){
-      hideLoadingSpinner();
       return response.json();
     }).then(function(json){
       json.results.forEach(function(item){
@@ -39,16 +37,13 @@ let pokemonRepository = (function(){
         add(pokemon);
       });
     }).catch(function(e){
-      hideLoadingSpinner();
       console.error(e);
     });
   }
 
   function loadDetails(item){
-    showLoadingSpinner();
     let url = item.detailsUrl;
     return fetch(url).then(function(response){
-      hideLoadingSpinner();
       return response.json();
     }).then(function(details){
       item.imageUrl = details.sprites.front_default;
@@ -59,26 +54,8 @@ let pokemonRepository = (function(){
         item.types.push(element.type.name);
       })
     }).catch(function(e){
-      hideLoadingSpinner();
       console.error(e);
     });
-  }
-
-  function showLoadingSpinner(){
-    let loadingContainer = document.querySelector('#loading-container');
-
-    loadingContainer.innerHTML = '';
-
-    let spinner = document.createElement('div');
-    spinner.classList.add('spinner');
-    loadingContainer.appendChild(spinner);
-
-    loadingContainer.classList.add('is-visible');
-  }
-
-  function hideLoadingSpinner(){
-    let loadingContainer = document.querySelector('#loading-container');
-    loadingContainer.classList.remove('is-visible');
   }
 
   function addListItem(pokemon) {
