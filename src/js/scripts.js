@@ -116,7 +116,7 @@ let pokemonRepository = (function(){
     findPokemon: findPokemon,
     addListItem: addListItem,
     loadList: loadList
-  };
+ };
 })();
 
 pokemonRepository.loadList().then(function(){
