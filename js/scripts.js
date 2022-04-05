@@ -1,6 +1,9 @@
 const pokemonRepository = (function(){
   const pokemonList = [];
-  const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+  const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=10';
+
+  let current_page = 1;
+  let rows = 5;
 
   function add(pokemon) {
     if(typeof pokemon === 'object' && !Array.isArray(pokemon)){
@@ -16,18 +19,18 @@ const pokemonRepository = (function(){
   }
 // carousel random function
 
-  async function displayPokemonCarousel() {
-    const total = 1126;
-    const pokeImgUrls = [];
-    $pokemonCarousel = $(`<div><img src=""</div>`)
-    for (let i=0; i<5; i++) {
-      const idx = Math.floor(Math.random() * total);
-      const poke = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idx}`);
-      pokeImgUrls.push(poke.sprites.front_default);
-      $pokemonCarousel += `img src=${poke.sprites.front_default};`
-    }
-    $('#carousel').append($PokemonCarousel)
-  }
+  // async function displayPokemonCarousel() {
+  //   const total = 1126;
+  //   const pokeImgUrls = [];
+  //   $pokemonCarousel = $(`<div><img src=""</div>`)
+  //   for (let i=0; i<5; i++) {
+  //     const idx = Math.floor(Math.random() * total);
+  //     const poke = await axios.get(`https://pokeapi.co/api/v2/pokemon/${idx}`);
+  //     pokeImgUrls.push(poke.sprites.front_default);
+  //     $pokemonCarousel += `img src=${poke.sprites.front_default};`
+  //   }
+  //   $('#carousel').append($PokemonCarousel)
+  // }
 
   function findPokemon(searchName){
     $('.pokemon-list').empty();
@@ -40,7 +43,7 @@ const pokemonRepository = (function(){
   }
 
   function loadList(){
-    displayPokemonCarousel();
+    // displayPokemonCarousel();
     return fetch(apiUrl).then(function(response){
       return response.json();
     }).then(function(json){
@@ -113,3 +116,4 @@ pokemonRepository.loadList().then(function(){
       pokemonRepository.addListItem(pokemon);
   });
 });
+

@@ -12,6 +12,11 @@
 
 /* font-family: 'Philosopher', sans-serif; */
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   color: var(--primary-color);
   background-color: var(--background-color);
@@ -27,13 +32,13 @@ body {
 h1 {
   font-size: var(--font-size-h1);
 }
-
+/* 
 .modal-img {
   display: block;
   margin-left: auto;
   margin-right: auto;
   max-width: 150px;
-}
+} */
 
 .close {
   font-size: var(--font-size-h1);
@@ -41,4 +46,43 @@ h1 {
 
 .navbar {
   display: flex;
+}
+
+main .pokemon-list .list-group-item {
+  transform: rotate(0);
+}
+
+main .pokemon-list .list-group-item:nth-child(2n) {
+  transform: rotate(5deg);
+}
+
+main .pokemon-list .list-group-item:nth-child(3n) {
+  transform: rotate(-5deg);
+}
+
+main .pokemon-list .list-group-item:hover {
+  background: #a3ebb1;
+}
+
+main .pokemon-list .list-group-item:nth-child(2n):hover {
+  background: #ffc0cb;
+}
+main .pokemon-list .list-group-item:nth-child(3n):hover {
+  background: #89CFF0;
+}
+
+
+.pagenumbers {
+
+}
+
+.pagenumbers button {
+
+}
+
+.pagenumbers button:hover {
+	background-color: #44EEAA;
+}
+
+.pagenumbers button.active {
 }
