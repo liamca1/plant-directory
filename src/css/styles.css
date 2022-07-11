@@ -1,44 +1,96 @@
 :root {
-  --background-color: #fff;
-  --primary-color: #353535;
-  --highlight-color: #3c6e71;
-  --warning-color: #9a031e;
-  --primary-font: Helvetica, Sans-Serif;
-  --font-weight-light: 300;
-  --font-weight-bold: 700;
-  --font-size-body: 42px;
-  --font-size-h1: 60px;
+  --bg-color-1: #edf6e5;
+  --bg-color-2: #b5eaea;
+  --bg-color-3: red;
+  --txt-color-1: white;
+  --txt-color-2: white;
 }
-
-/* font-family: 'Philosopher', sans-serif; */
 
 body {
-  color: var(--primary-color);
-  background-color: var(--background-color);
-  font-family: var(--primary-font);
-  font-weight: var(--font-weight-light);
-  font-size: var(--font-size-body);
-
-  /* Sets the line-height to 1.6 */
-  line-height: 1.6;
+  background-color: var(--bg-color-1);
+  color: var(--txt-color-1);
 }
 
-
-h1 {
-  font-size: var(--font-size-h1);
+.navbar-custom,
+.navbar-text {
+  background-color: var(--txt-color-1);
+  color: var(--bg-color-1);
 }
 
-.modal-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 150px;
+.title {
+  margin-right: 30px;
 }
 
-.close {
-  font-size: var(--font-size-h1);
+.title,
+.modal-title {
+  font-family: 'Signika', sans-serif;
+  font-size: 3rem;
+  text-align: center;
 }
 
-.navbar {
-  display: flex;
+#searchBar {
+  background-color: var(--bg-color-3);
+  font-family: 'FontAwesome', 'Lato', sans-serif;
+  font-size: 1.4rem;
+  border: none;
+  width: auto;
+}
+
+.list-group-item-mine {
+  background-color: var(--bg-color-2);
+  margin: 4px auto;
+  border-radius: 4px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid var black;
+}
+
+.list-group-item-mine:hover,
+#searchBar:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.pokemon-button {
+  color: var(--txt-color-1);
+  border: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.4rem;
+  width: 100%;
+}
+
+.pokemon-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.col-gap {
+  column-gap: 0rem;
+}
+
+.modal-content {
+  background: var(--bg-color-3);
+  border-radius: 8px;
+  text-transform: capitalize;
+  border: 1px solid black;
+}
+
+.modal-body {
+  font-size: 1rem;
+}
+
+#btn-back-to-top {
+  background-color: var(--bg-color-3);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+.fa-arrow-up {
+  font-size: 1.5rem;
+  color: var(--txt-color-1);
+}
+
+#btn-back-to-top:hover {
+  opacity: 0.9;
+  cursor: pointer;
 }
