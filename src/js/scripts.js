@@ -125,10 +125,10 @@ const pokemonRepository = (function(){
   }
 
   return {
-    getAll,
-    findPokemon,
-    addListItem,
-    loadList
+    getAll, getAll,
+    findPokemon, findPokemon,
+    addListItem, addListItem,
+    loadList, loadList
  };
 })();
 
