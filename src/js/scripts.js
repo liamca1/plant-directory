@@ -1,6 +1,6 @@
-const pokemonRepository = (function(){
-  const pokemonList = [];
-  const apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+let pokemonRepository = (function(){
+  let pokemonList = [];
+  let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
   function add(pokemon) {
     if(typeof pokemon === 'object' && !Array.isArray(pokemon)){
@@ -43,7 +43,7 @@ const pokemonRepository = (function(){
       return response.json();
     }).then(function(json){
       json.results.forEach(function(item){
-        const pokemon  = {
+        let pokemon  = {
           name: item.name,
           detailsUrl: item.url
         };
@@ -55,7 +55,7 @@ const pokemonRepository = (function(){
   }
 
   function loadDetails(item){
-    const url = item.detailsUrl;
+    let url = item.detailsUrl;
     return fetch(url).then(function(response){
       return response.json();
     }).then(function(details){
@@ -72,8 +72,8 @@ const pokemonRepository = (function(){
   }
 
   function addListItem(pokemon) {
-    const listGroupElement = document.querySelector('.pokemon-list');
-    const listItemButton = document.createElement('button');
+    let listGroupElement = document.querySelector('.pokemon-list');
+    let listItemButton = document.createElement('button');
     listItemButton.innerText = pokemon.name;
     listItemButton.classList.add('list-group-item', 'list-group-item-action',
       'text-center', 'text-uppercase');
@@ -99,24 +99,24 @@ const pokemonRepository = (function(){
   }
 
   function showModal(pokemon) {
-    const modalTitle = $('.modal-title');
-    const modalBody = $('.modal-body');
+    let modalTitle = $('.modal-title');
+    let modalBody = $('.modal-body');
 
     modalTitle.empty();
     modalBody.empty();
 
-    const titleElement = $('<h1 class="text-uppercase">' + pokemon.name + '</h1>');
+    let titleElement = $('<h1 class="text-uppercase">' + pokemon.name + '</h1>');
     modalTitle.append(titleElement);
 
-    const imageElement = document.createElement('img');
+    let imageElement = document.createElement('img');
     imageElement.classList.add('modal-img');
     imageElement.src = pokemon.imageUrl;
 
-    const heightElement = $('<p>' + 'Height: ' + pokemon.height + 'cm' + '</p>');
+    let heightElement = $('<p>' + 'Height: ' + pokemon.height + 'cm' + '</p>');
 
-    const weightElement = $('<p>' + 'Weight: ' + pokemon.weight + 'g' + '</p>');
+    let weightElement = $('<p>' + 'Weight: ' + pokemon.weight + 'g' + '</p>');
 
-    const typesElement = $('<p class="text-capitalize">' + 'Types: ' + pokemon.types.join(', ') + '</p>');
+    let typesElement = $('<p class="text-capitalize">' + 'Types: ' + pokemon.types.join(', ') + '</p>');
 
     modalBody.append(imageElement);
     modalBody.append(heightElement);
