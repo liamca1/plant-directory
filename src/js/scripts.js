@@ -92,8 +92,8 @@ const pokemonRepository = (function(){
     });
   }
 
-  function showDetails(pokemon){
-    loadDetails(pokemon).then(function () {
+  function showDetails(pokemon) {
+    pokemonRepository.loadDetails(pokemon).then(function() {
       showModal(pokemon);
     });
   }
